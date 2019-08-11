@@ -6,3 +6,12 @@ resource "aws_vpc" "qiita_clone_2019_vpc" {
     "Name" = "qiita_clone_2019_vpc"
   }
 }
+
+resource "aws_subnet" "qiita_clone_2019_public_subnet" {
+  availability_zone = "ap-northeast-1d"
+  cidr_block        = "10.0.0.0/24"
+  vpc_id            = "${aws_vpc.qiita_clone_2019_vpc.id}"
+  tags = {
+    "Name" = "qiita_clone_2019_public_subnet"
+  }
+}
