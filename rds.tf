@@ -20,3 +20,13 @@ resource "aws_db_instance" "qiita-clone-2019-db-instance" {
   max_allocated_storage = 1000
   copy_tags_to_snapshot = true
 }
+
+resource "aws_db_subnet_group" "qiita_clone_2019_rds_subnet_group" {
+  name = "qiita_clone_2019_rds_subnet_group"
+  description = "qiita_clone_2019_rds_subnet_group"
+  subnet_ids = [
+    "${aws_subnet.qiita_clone_2019_private_subnet.id}",
+    "${aws_subnet.qiita_clone_2019_rds_subnet.id}"
+  ]
+}
+
